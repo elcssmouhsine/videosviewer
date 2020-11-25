@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import videos from './output.json';
 import "./tailwind.output.css"
-
+const VIDEOS_URL = 'http://localhost/mp4s/'
 function timeToSeconds(time: string): number {
   const a = time.split(':'); // split it at the colons
   // minutes are worth 60 seconds. Hours are worth 60 minutes.
@@ -142,7 +142,7 @@ function VideoItem({ video }: IVideoItemProps): JSX.Element {
 
   return (<div key={video.video} className="">
   <div className="bg-gray-900 rounded h-full pb-6 shadow">
-    <video controls className="focus:outline-none" ref={videoReference} src={`http://localhost/mp4s/${video.video}`} />
+    <video controls className="focus:outline-none" ref={videoReference} src={`${VIDEOS_URL}${video.video}`} />
     <div className="items-stretch grid-cols-1 grid">
     {video.violations.map((violation: Violation, index: number): JSX.Element => 
       <ViolationRow 
